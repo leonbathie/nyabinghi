@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Campement Nyabinghi · Abené, Casamance — Sénégal</title>
+<meta name="description" content="Campement de charme en bord de plage privée à Abené, Casamance. Cases authentiques, cuisine sénégalaise, expériences uniques entre océan, baobabs et pirogues." />
+<meta property="og:title" content="Campement Nyabinghi · Abené, Casamance" />
+<meta property="og:description" content="Une parenthèse hors du temps, entre océan Atlantique, palmiers et hospitalité sénégalaise." />
+<meta property="og:image" content="images/02_vue_aerienne.webp" />
+<link rel="icon" type="image/png" href="images/02_vue_aerienne.webp" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Lucide icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- =============== NAV =============== -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <a href="#top" class="brand">
+      <span class="brand-mark">N</span>
+      <span>
+        <div class="brand-text">Nyabinghi</div>
+        <div class="brand-sub" data-i18n="brand.sub">Abené · Sénégal</div>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#story" data-i18n="nav.about">L'esprit</a></li>
+      <li><a href="#stays" data-i18n="nav.stays">Hébergements</a></li>
+      <li><a href="#experiences" data-i18n="nav.exp">Expériences</a></li>
+      <li><a href="#casamance" data-i18n="nav.region">Casamance</a></li>
+      <li><a href="#gallery" data-i18n="nav.gallery">Galerie</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang">
+        <button class="lang-btn" id="langBtn"><i data-lucide="globe" style="width:13px;height:13px"></i> <span id="langCurrent">FR</span></button>
+        <div class="lang-menu" id="langMenu">
+          <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+          <button class="lang-option" data-lang="en">🇬🇧 English</button>
+          <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+        </div>
+      </div>
+      <a href="#contact" class="btn btn-primary hide-mobile" data-i18n="nav.book">Réserver</a>
+      <button class="menu-toggle" id="menuBtn" aria-label="menu"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- =============== MOBILE MENU =============== -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="closeMenuBtn" aria-label="close"><i data-lucide="x"></i></button>
+  <a href="#story" data-i18n="nav.about">L'esprit</a>
+  <a href="#stays" data-i18n="nav.stays">Hébergements</a>
+  <a href="#experiences" data-i18n="nav.exp">Expériences</a>
+  <a href="#casamance" data-i18n="nav.region">Casamance</a>
+  <a href="#gallery" data-i18n="nav.gallery">Galerie</a>
+  <a href="#contact" data-i18n="nav.contact">Contact</a>
+</div>
+
+<!-- =============== HERO =============== -->
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <div class="hero-slide active" style="background-image:url('images/08_allee_plage_coucher_soleil.webp')"></div>
+    <div class="hero-slide" style="background-image:url('images/mami_32.jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('images/11_vue_ocean_palmiers.webp')"></div>
+    <div class="hero-slide" style="background-image:url('images/mami_26.jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('images/05_plage_terrasse.webp')"></div>
+    <div class="hero-slide" style="background-image:url('images/09_case_exterieure_palmier.jpg')"></div>
+  </div>
+  <div class="container">
+    <div class="hero-eyebrow">
+      <span class="line"></span>
+      <span data-i18n="hero.eyebrow">Casamance · Sénégal</span>
+    </div>
+    <h1 data-i18n="hero.title">Nyabinghi</h1>
+    <p class="tagline" data-i18n="hero.tag">une parenthèse au bord du monde</p>
+    <p class="lead" data-i18n="hero.lead">Sur la plage d'Abené, entre l'océan Atlantique et les forêts de palmiers, un campement de charme où le temps ralentit. Cases en terre, cuisine du terroir, hospitalité sincère.</p>
+    <div class="hero-cta">
+      <a href="#stays" class="btn btn-primary"><span data-i18n="hero.cta1">Découvrir</span> <i data-lucide="arrow-right" style="width:16px;height:16px"></i></a>
+      <a href="#contact" class="btn btn-ghost" data-i18n="hero.cta2">Réserver</a>
+    </div>
+    <div class="hero-meta">
+      <div class="stat">
+        <div class="stat-num">15+</div>
+        <div class="stat-lbl" data-i18n="hero.stat1">Années d'accueil</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100<span style="font-size:.6em">m</span></div>
+        <div class="stat-lbl" data-i18n="hero.stat2">de la plage</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4,8<span style="font-size:.6em">/5</span></div>
+        <div class="stat-lbl" data-i18n="hero.stat3">Avis voyageurs</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span data-i18n="hero.scroll">Faire défiler</span>
+    <span class="bar"></span>
+  </div>
+</header>
+
+<!-- =============== STORY =============== -->
+<section id="story" class="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <span class="eyebrow" data-i18n="story.eyebrow">L'esprit du lieu</span>
+        <h2 data-i18n="story.title">L'Afrique, à hauteur d'âme.</h2>
+        <p data-i18n="story.p1">Nyabinghi n'est pas un hôtel. C'est un campement, dans le sens le plus noble du terme : une halte habitée, des cases en terre crue dressées sous les cocotiers, et une lumière dorée qui filtre toute la journée à travers les palmes.</p>
+        <p data-i18n="story.p2">À deux pas de l'océan, loin du tumulte et des resorts, vous découvrez la Casamance comme on l'a toujours rêvée — vraie, généreuse, vivante.</p>
+        <div class="tags">
+          <span class="tag"><i data-lucide="palmtree" style="width:14px;height:14px"></i><span data-i18n="story.t1">Plage privée</span></span>
+          <span class="tag"><i data-lucide="waves" style="width:14px;height:14px"></i><span data-i18n="story.t5">Piscine</span></span>
+          <span class="tag"><i data-lucide="utensils-crossed" style="width:14px;height:14px"></i><span data-i18n="story.t2">Cuisine du terroir</span></span>
+          <span class="tag"><i data-lucide="leaf" style="width:14px;height:14px"></i><span data-i18n="story.t3">Éco-responsable</span></span>
+          <span class="tag"><i data-lucide="users" style="width:14px;height:14px"></i><span data-i18n="story.t4">Accueil familial</span></span>
+        </div>
+      </div>
+      <div class="story-img reveal">
+        <img src="images/09_case_exterieure_palmier.jpg" alt="Case en terre sous les palmiers" loading="lazy" />
+        <div class="caption">Case Diatta · 2 pers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== AERIAL =============== -->
+<section class="aerial">
+  <div class="aerial-image">
+    <div class="aerial-overlay reveal">
+      <span class="eyebrow" data-i18n="aerial.eyebrow">Vue aérienne</span>
+      <h2 data-i18n="aerial.title">Un écrin de palmiers, face à l'océan.</h2>
+      <p data-i18n="aerial.p">Trois hectares de jardin tropical, des allées de sable blanc, sept cases dispersées sous la canopée — et toujours, en arrière-plan, la rumeur des vagues.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============== STAYS =============== -->
+<section id="stays" class="stays">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="stays.eyebrow">Hébergements</span>
+      <h2 data-i18n="stays.title">Trois manières d'habiter le lieu.</h2>
+      <p data-i18n="stays.p">Toutes les chambres sont en matériaux locaux : terre crue, bambou, paille tressée. Confort sobre, charme authentique.</p>
+    </div>
+    <div class="stay-grid">
+
+      <article class="stay-card reveal">
+        <div class="stay-img">
+          <img src="images/16_chambre_case_double.webp" alt="Chambre en case avec lit double" loading="lazy" />
+          <span class="stay-tag" data-i18n="stays.c1.tag">Iconique</span>
+          <span class="stay-pax"><i data-lucide="users" style="width:13px;height:13px"></i> 2</span>
+        </div>
+        <div class="stay-body">
+          <h3 data-i18n="stays.c1.title">Case Ronde</h3>
+          <p data-i18n="stays.c1.desc">Architecture traditionnelle sous toit en chaume. Plafond en bambou tressé, lit en bois massif, vue sur le jardin.</p>
+          <ul class="stay-feats">
+            <li><i data-lucide="bed-double"></i><span data-i18n="stays.c1.f1">Lit double king-size</span></li>
+            <li><i data-lucide="bath"></i><span data-i18n="stays.c1.f2">Salle de bain privative</span></li>
+            <li><i data-lucide="wind"></i><span data-i18n="stays.c1.f3">Ventilation naturelle</span></li>
+          </ul>
+          <a href="#contact" class="stay-cta" data-i18n="stays.book">Réserver <i data-lucide="arrow-right" style="width:13px;height:13px"></i></a>
+        </div>
+      </article>
+
+      <article class="stay-card reveal">
+        <div class="stay-img">
+          <img src="images/17_chambre_confort_3_lits.webp" alt="Chambre confort 3 lits" loading="lazy" />
+          <span class="stay-tag hot" data-i18n="stays.c2.tag">Famille</span>
+          <span class="stay-pax"><i data-lucide="users" style="width:13px;height:13px"></i> 3-4</span>
+        </div>
+        <div class="stay-body">
+          <h3 data-i18n="stays.c2.title">Chambre Confort</h3>
+          <p data-i18n="stays.c2.desc">Idéale pour les familles ou groupes d'amis. Trois lits, poutres apparentes, douche carrelée. Lumineuse et fraîche.</p>
+          <ul class="stay-feats">
+            <li><i data-lucide="bed"></i><span data-i18n="stays.c2.f1">3 lits + moustiquaires</span></li>
+            <li><i data-lucide="bath"></i><span data-i18n="stays.c2.f2">SDB privative & WC</span></li>
+            <li><i data-lucide="fan"></i><span data-i18n="stays.c2.f3">Ventilateur sur pied</span></li>
+          </ul>
+          <a href="#contact" class="stay-cta" data-i18n="stays.book">Réserver <i data-lucide="arrow-right" style="width:13px;height:13px"></i></a>
+        </div>
+      </article>
+
+      <article class="stay-card reveal">
+        <div class="stay-img">
+          <img src="images/14_case_jardin_face.avif" alt="Case avec terrasse côté jardin" loading="lazy" />
+          <span class="stay-tag" data-i18n="stays.c3.tag">Romantique</span>
+          <span class="stay-pax"><i data-lucide="users" style="width:13px;height:13px"></i> 2</span>
+        </div>
+        <div class="stay-body">
+          <h3 data-i18n="stays.c3.title">Case Jardin</h3>
+          <p data-i18n="stays.c3.desc">Une case indépendante avec sa terrasse privée, nichée dans la végétation. Pour ceux qui cherchent l'intimité totale.</p>
+          <ul class="stay-feats">
+            <li><i data-lucide="trees"></i><span data-i18n="stays.c3.f1">Terrasse privée</span></li>
+            <li><i data-lucide="bed-double"></i><span data-i18n="stays.c3.f2">Lit double + moustiquaire</span></li>
+            <li><i data-lucide="leaf"></i><span data-i18n="stays.c3.f3">Calme absolu</span></li>
+          </ul>
+          <a href="#contact" class="stay-cta" data-i18n="stays.book">Réserver <i data-lucide="arrow-right" style="width:13px;height:13px"></i></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============== BEACH =============== -->
+<section class="beach">
+  <div class="container">
+    <div class="beach-grid">
+      <img src="images/05_plage_terrasse.webp" alt="Terrasse de plage en bambou" class="img-tall reveal" loading="lazy" />
+      <div class="beach-text reveal">
+        <span class="eyebrow" data-i18n="beach.eyebrow">À la plage</span>
+        <h2 data-i18n="beach.title">Une terrasse en bambou, face au large.</h2>
+        <p data-i18n="beach.p1">Au bout du jardin, après l'allée de palmiers, notre paillote en bambou domine la plage. Chaises longues, hamacs, et la mer à perte de vue.</p>
+        <p data-i18n="beach.p2">Le bar y sert des jus de bissap, des cocktails au gingembre, et des plats inspirés du jour. La terrasse est aussi le théâtre des couchers de soleil les plus saisissants de la côte.</p>
+        <a href="#experiences" class="btn-link" data-i18n="beach.cta">Voir les expériences <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== POOL =============== -->
+<section class="pool">
+  <div class="container">
+    <div class="pool-grid">
+      <div class="pool-text reveal">
+        <span class="eyebrow" data-i18n="pool.eyebrow">L'oasis</span>
+        <h2 data-i18n="pool.title">Une piscine, à l'ombre des manguiers.</h2>
+        <p data-i18n="pool.p1">Au cœur du jardin, une piscine d'eau turquoise se révèle entre les manguiers et les bougainvillées. C'est l'oasis du camp — pour piquer une tête entre deux baignades en mer, ou simplement lire à l'ombre d'un parasol en paille.</p>
+        <p data-i18n="pool.p2">Les transats en wax kente jaune ponctuent le patio carrelé, et les manguiers laissent tomber leurs fruits à portée de main pendant la saison.</p>
+        <ul class="pool-feats">
+          <li><i data-lucide="sun"></i><span data-i18n="pool.f1">Eau turquoise toute l'année</span></li>
+          <li><i data-lucide="umbrella"></i><span data-i18n="pool.f2">Parasols en paille &amp; transats wax</span></li>
+          <li><i data-lucide="trees"></i><span data-i18n="pool.f3">Sous l'ombre des manguiers</span></li>
+        </ul>
+      </div>
+      <div class="pool-imgs reveal">
+        <img class="pool-main" src="images/mami_32.jpeg" alt="Piscine et transats kente" loading="lazy" />
+        <img class="pool-side" src="images/mami_28.jpeg" alt="Piscine vue de la case" loading="lazy" />
+        <div class="pool-badge font-script" data-i18n="pool.badge">turquoise &amp; or</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== EXPERIENCES =============== -->
+<section id="experiences" class="experiences">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="exp.eyebrow">Expériences</span>
+      <h2 data-i18n="exp.title">Vivre la Casamance, autrement.</h2>
+      <p data-i18n="exp.p">Six expériences locales, organisées avec nos partenaires de la région, pour rencontrer les habitants, la nature, et les rythmes de la Basse-Casamance.</p>
+    </div>
+    <div class="exp-grid">
+
+      <article class="exp-card reveal">
+        <img src="images/19_plage_pirogues.webp" alt="Pirogues colorées sur la plage" loading="lazy" />
+        <div class="exp-body">
+          <div class="icon"><i data-lucide="ship"></i></div>
+          <h3 data-i18n="exp.e1.t">Sortie en pirogue</h3>
+          <p data-i18n="exp.e1.p">Naviguez dans les bolongs au lever du soleil, entre mangroves et villages.</p>
+        </div>
+      </article>
+
+      <article class="exp-card reveal">
+        <img src="images/15_arbre_fromager.webp" alt="Arbre fromager sacré" loading="lazy" />
+        <div class="exp-body">
+          <div class="icon"><i data-lucide="trees"></i></div>
+          <h3 data-i18n="exp.e2.t">Forêt sacrée</h3>
+          <p data-i18n="exp.e2.p">Marche guidée sous les fromagers et baobabs, à la découverte des plantes médicinales.</p>
+        </div>
+      </article>
+
+      <article class="exp-card reveal">
+        <img src="images/04_decoration_masque.webp" alt="Masque africain traditionnel" loading="lazy" />
+        <div class="exp-body">
+          <div class="icon"><i data-lucide="drum"></i></div>
+          <h3 data-i18n="exp.e3.t">Soirées percussions</h3>
+          <p data-i18n="exp.e3.p">Initiation au djembé autour du feu, en compagnie des artistes du village.</p>
+        </div>
+      </article>
+
+      <article class="exp-card reveal">
+        <img src="images/06_jardin_allee.webp" alt="Allée du jardin tropical" loading="lazy" />
+        <div class="exp-body">
+          <div class="icon"><i data-lucide="bike"></i></div>
+          <h3 data-i18n="exp.e4.t">Vélo & villages</h3>
+          <p data-i18n="exp.e4.p">À deux roues le long des rizières, à la rencontre des familles diolas.</p>
+        </div>
+      </article>
+
+      <article class="exp-card reveal">
+        <img src="images/12_coucher_soleil_plage.webp" alt="Coucher de soleil sur la plage" loading="lazy" />
+        <div class="exp-body">
+          <div class="icon"><i data-lucide="sunset"></i></div>
+          <h3 data-i18n="exp.e5.t">Apéro coucher de soleil</h3>
+          <p data-i18n="exp.e5.p">Verre à la main sur la plage, le rituel sacré de chaque soir au camp.</p>
+        </div>
+      </article>
+
+      <article class="exp-card reveal">
+        <img src="images/03_reception_bar.webp" alt="Bar de la réception" loading="lazy" />
+        <div class="exp-body">
+          <div class="icon"><i data-lucide="utensils-crossed"></i></div>
+          <h3 data-i18n="exp.e6.t">Cuisine sénégalaise</h3>
+          <p data-i18n="exp.e6.p">Atelier en cuisine avec Maman Aïda — thiéboudienne, yassa, mafé.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============== CASAMANCE =============== -->
+<section id="casamance" class="casamance">
+  <div class="cas-deco cas-deco-1"></div>
+  <div class="cas-deco cas-deco-2"></div>
+  <div class="container">
+    <div class="cas-grid">
+      <div class="cas-text reveal">
+        <span class="eyebrow" data-i18n="cas.eyebrow">La région</span>
+        <h2 data-i18n="cas.title">Abené, le secret le mieux gardé du Sénégal.</h2>
+        <p data-i18n="cas.p1">Au sud du Sénégal, séparée du reste du pays par la Gambie, la Casamance est une terre à part. Plus verte, plus tropicale, plus calme. Abené en est l'un des joyaux côtiers.</p>
+        <p data-i18n="cas.p2">Plages désertes de sable blond, forêts de palmiers et de fromagers géants, villages diolas où la vie suit encore le rythme des saisons et des marées.</p>
+        <div class="cas-stats">
+          <div class="cas-stat">
+            <div class="num">26<span class="unit">°</span></div>
+            <div class="lbl" data-i18n="cas.s1">Toute l'année</div>
+          </div>
+          <div class="cas-stat">
+            <div class="num">5<span class="unit">h</span></div>
+            <div class="lbl" data-i18n="cas.s2">Depuis Dakar</div>
+          </div>
+          <div class="cas-stat">
+            <div class="num">∞</div>
+            <div class="lbl" data-i18n="cas.s3">Plages désertes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cas-stage reveal">
+        <div class="cas-stack" id="casStack">
+          <figure class="cas-card cas-c1">
+            <img src="images/15_arbre_fromager.webp" alt="Arbre fromager" loading="lazy" />
+            <figcaption><span class="font-script" data-i18n="cas.cap1">Fromager sacré</span></figcaption>
+          </figure>
+          <figure class="cas-card cas-c2">
+            <img src="images/19_plage_pirogues.webp" alt="Pirogues d'Abené" loading="lazy" />
+            <figcaption><span class="font-script" data-i18n="cas.cap2">Pirogues d'Abené</span></figcaption>
+          </figure>
+          <figure class="cas-card cas-c3">
+            <img src="images/11_vue_ocean_palmiers.webp" alt="Océan Atlantique" loading="lazy" />
+            <figcaption><span class="font-script" data-i18n="cas.cap3">L'Atlantique</span></figcaption>
+          </figure>
+          <figure class="cas-card cas-c4">
+            <img src="images/mami_30.jpeg" alt="Bougainvillées Nyabinghi" loading="lazy" />
+            <figcaption><span class="font-script" data-i18n="cas.cap4">Bougainvillées</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============== GALLERY =============== -->
+<section id="gallery" class="gallery">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="gallery.eyebrow">Galerie</span>
+      <h2 data-i18n="gallery.title">Le camp, en images.</h2>
+      <p data-i18n="gallery.p">Cliquez sur une photo pour l'agrandir.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item gal-1"><img src="images/02_vue_aerienne.webp" alt="Vue aérienne" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/07_entree_portail.webp" alt="Entrée du camp" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/03_reception_bar.webp" alt="Bar Nyabinghi" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/16_chambre_case_double.webp" alt="Chambre en case" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/04_decoration_masque.webp" alt="Décoration masque" loading="lazy" /></div>
+      <div class="gal-item gal-w"><img src="images/05_plage_terrasse.webp" alt="Terrasse de plage" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/10_exterieur_porte_banc.webp" alt="Banc extérieur" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/08_allee_plage_coucher_soleil.webp" alt="Allée au coucher du soleil" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/12_coucher_soleil_plage.webp" alt="Coucher de soleil" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/09_case_exterieure_palmier.jpg" alt="Case extérieure" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/11_vue_ocean_palmiers.webp" alt="Vue océan" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/14_case_jardin_face.avif" alt="Case jardin face" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/mami_26.jpeg" alt="Enseigne Nyabinghi" loading="lazy" /></div>
+      <div class="gal-item gal-w"><img src="images/mami_34.jpeg" alt="Vue piscine" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/mami_33.jpeg" alt="Papayer du jardin" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/mami_20.jpeg" alt="Transats kente" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/mami_22.jpeg" alt="Allée jardin" loading="lazy" /></div>
+      <div class="gal-item gal-s"><img src="images/mami_27.jpeg" alt="Plantes tropicales" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== REVIEWS =============== -->
+<section class="reviews">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow" data-i18n="reviews.eyebrow">Témoignages</span>
+      <h2 data-i18n="reviews.title">Ce qu'ils en disent.</h2>
+    </div>
+    <div class="rev-wrap">
+      <div class="rev-track">
+        <div class="rev-slider" id="revSlider">
+          <div class="rev-slide">
+            <div class="stars">★★★★★</div>
+            <blockquote data-i18n="reviews.q1">« Une bulle de calme et d'authenticité. La cuisine est divine, le personnel attentionné, et le coucher de soleil sur la plage… inoubliable. On reviendra. »</blockquote>
+            <cite>Camille &amp; Antoine · France</cite>
+          </div>
+          <div class="rev-slide">
+            <div class="stars">★★★★★</div>
+            <blockquote data-i18n="reviews.q2">« Far from the tourist crowd, Nyabinghi feels like a real escape. Simple comforts, deep peace, and the most generous welcome. A treasure of Casamance. »</blockquote>
+            <cite>Sarah · United Kingdom</cite>
+          </div>
+          <div class="rev-slide">
+            <div class="stars">★★★★★</div>
+            <blockquote data-i18n="reviews.q3">« Lugar mágico para desconectar. Las cabañas de tierra son preciosas, la playa privada increíble, y la familia que lleva el camp te hace sentir en casa. »</blockquote>
+            <cite>Lucía · España</cite>
+          </div>
+          <div class="rev-slide">
+            <div class="stars">★★★★★</div>
+            <blockquote data-i18n="reviews.q4">« Adresse confidentielle, qu'on a presque envie de garder pour soi. Cases ravissantes, table généreuse, balades en pirogue… Tout y est juste. »</blockquote>
+            <cite>Mathieu · Belgique</cite>
+          </div>
+        </div>
+      </div>
+      <div class="rev-controls">
+        <button class="rev-btn" id="revPrev" aria-label="précédent"><i data-lucide="arrow-left" style="width:16px;height:16px"></i></button>
+        <div class="rev-dots" id="revDots"></div>
+        <button class="rev-btn" id="revNext" aria-label="suivant"><i data-lucide="arrow-right" style="width:16px;height:16px"></i></button>
+      </div>
+      <div class="rev-source" data-i18n="reviews.source">Avis Google · Tripadvisor · Booking</div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CTA BANNER =============== -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--terra-light)" data-i18n="cta.eyebrow">Réservation</span>
+    <h2 data-i18n="cta.title">Quand venez-vous ?</h2>
+    <p data-i18n="cta.p">Réponse en moins de 24h. Tarifs dégressifs à partir de 4 nuits. Demi-pension disponible.</p>
+    <div class="cta-row">
+      <a href="https://wa.me/221770758313" target="_blank" rel="noopener" class="btn btn-primary"><i data-lucide="message-circle" style="width:16px;height:16px"></i> WhatsApp</a>
+      <a href="#contact" class="btn btn-ghost" data-i18n="cta.btn2">Formulaire</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CONTACT =============== -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow" data-i18n="contact.eyebrow">Contact</span>
+        <h2 style="font-size:clamp(34px,4.5vw,52px);margin:18px 0 30px" data-i18n="contact.title">Préparons votre séjour ensemble.</h2>
+        <div class="ci-block">
+          <div class="lbl" data-i18n="contact.l1">Téléphone & WhatsApp</div>
+          <div class="val"><a href="tel:+221770758313">+221 77 075 83 13</a></div>
+        </div>
+        <div class="ci-block">
+          <div class="lbl">Email</div>
+          <div class="val"><a href="mailto:contact@nyabinghi.sn">contact@nyabinghi.sn</a></div>
+        </div>
+        <div class="ci-block">
+          <div class="lbl" data-i18n="contact.l3">Adresse</div>
+          <div class="val">Abené, Casamance · Sénégal</div>
+        </div>
+        <div class="ci-block">
+          <div class="lbl" data-i18n="contact.l4">Ouvert</div>
+          <div class="val" data-i18n="contact.v4">Toute l'année · 7j/7</div>
+        </div>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px"></i></a>
+          <a href="https://wa.me/221770758313" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-circle" style="width:18px;height:18px"></i></a>
+          <a href="mailto:contact@nyabinghi.sn" aria-label="Email"><i data-lucide="mail" style="width:18px;height:18px"></i></a>
+        </div>
+      </div>
+
+      <form class="form reveal" onsubmit="handleSubmit(event)">
+        <h3 data-i18n="form.title">Demande de réservation</h3>
+        <div class="form-row">
+          <div>
+            <label data-i18n="form.name">Nom complet</label>
+            <input type="text" required placeholder="Jean Diallo" />
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" required placeholder="vous@email.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label data-i18n="form.dates">Dates de séjour</label>
+            <input type="text" required placeholder="01/03 → 08/03" />
+          </div>
+          <div>
+            <label data-i18n="form.guests">Voyageurs</label>
+            <select>
+              <option>1 personne</option>
+              <option selected>2 personnes</option>
+              <option>3 personnes</option>
+              <option>4 personnes</option>
+              <option data-i18n="form.guests5">5 et plus</option>
+            </select>
+          </div>
+        </div>
+        <label data-i18n="form.stay">Hébergement souhaité</label>
+        <select>
+          <option data-i18n="form.stay1">Case Ronde</option>
+          <option data-i18n="form.stay2">Chambre Confort</option>
+          <option data-i18n="form.stay3">Case Jardin</option>
+          <option data-i18n="form.stay4">Conseillez-moi</option>
+        </select>
+        <label data-i18n="form.msg">Message</label>
+        <textarea data-i18n-placeholder="form.msgph" placeholder="Parlez-nous de votre projet de séjour…"></textarea>
+        <button type="submit" class="btn btn-primary"><span data-i18n="form.send">Envoyer via WhatsApp</span> <i data-lucide="send" style="width:14px;height:14px"></i></button>
+        <p class="form-note" data-i18n="form.note">Aucune donnée n'est stockée — votre message ouvre directement WhatsApp.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =============== MAP =============== -->
+<section class="map-section">
+  <iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-16.84,12.88,-16.78,12.93&amp;layer=mapnik&amp;marker=12.905,-16.81" title="Carte Abené Casamance"></iframe>
+</section>
+
+<!-- =============== FOOTER =============== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="brand" style="display:inline-flex">
+          <span class="brand-mark">N</span>
+          <span><div class="brand-text">Nyabinghi</div><div class="brand-sub">Abené · Sénégal</div></span>
+        </a>
+        <p class="desc" data-i18n="footer.desc">Campement de charme au bord de l'océan, en Casamance. Cases en terre, plage privée, et l'hospitalité sénégalaise dans toute sa générosité.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.h1">Navigation</h4>
+        <ul>
+          <li><a href="#story" data-i18n="nav.about">L'esprit</a></li>
+          <li><a href="#stays" data-i18n="nav.stays">Hébergements</a></li>
+          <li><a href="#experiences" data-i18n="nav.exp">Expériences</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">Galerie</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer.h2">Contact</h4>
+        <ul>
+          <li><a href="tel:+221770758313">+221 77 075 83 13</a></li>
+          <li><a href="mailto:contact@nyabinghi.sn">contact@nyabinghi.sn</a></li>
+          <li><a href="https://wa.me/221770758313" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>Abené, Casamance · Sénégal</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Campement Nyabinghi · <span data-i18n="footer.rights">Tous droits réservés</span></span>
+      <span data-i18n="footer.made">Conçu avec ♥ en Casamance</span>
+    </div>
+  </div>
+</footer>
+
+<!-- =============== FLOAT WHATSAPP =============== -->
+<a href="https://wa.me/221770758313" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <i data-lucide="message-circle" style="width:24px;height:24px;position:relative;z-index:1"></i>
+</a>
+
+<!-- =============== LIGHTBOX =============== -->
+<div class="lightbox" id="lightbox">
+  <button class="close" id="lbClose" aria-label="fermer"><i data-lucide="x" style="width:28px;height:28px"></i></button>
+  <img id="lbImg" src="" alt="" />
+</div>
+
+<script src="i18n.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
