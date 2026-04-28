@@ -21,6 +21,21 @@ jobs:
         run: |
           ssh-keygen -lf ~/.ssh/id_debug || true
 
+      - name: Prepare target and show lengths
+        run: |
+          USER_RAW="${{ secrets.VPS_USER }}"
+          HOST_RAW="${{ secrets.VPS_HOST }}"
+          USER=$(printf '%s' "$USER_RAW" | tr -d '\r\n')
+          HOST=$(printf '%s' "$HOST_RAW" | tr -d '\r\n')
+          TARGET="$USER@$HOST"
+          echo "Target length: $(printf '%s' "$TARGET" | wc -c) bytes"
+          echo "User length: $(printf '%s' "$USER" | wc -c) bytes"
+          echo "Host length: $(printf '%s' "$HOST" | wc -c) bytes"
+          echo "Running ssh to masked target"
+
       - name: Test SSH auth (verbose)
         run: |
-          ssh -i ~/.ssh/id_debug -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -vvv ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} echo "SSH_OK"
+          USER=$(printf '%s' "${{ secrets.VPS_USER }}" | tr -d '\r\n')
+          HOST=$(printf '%s' "${{ secrets.VPS_HOST }}" | tr -d '\r\n')
+          TARGET="$USER@$HOST"
+          ssh -i ~/.ssh/id_debug -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -vvv "$TARGET" echo "SSH_OK"
