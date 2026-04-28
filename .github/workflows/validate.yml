@@ -1,0 +1,32 @@
+name: Validate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  html:
+    name: HTML & CSS check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install HTMLHint
+        run: npm install -g htmlhint
+
+      - name: Lint HTML
+        run: htmlhint "**/*.html" --config .htmlhintrc || true
+
+      - name: Check broken local images
+        run: |
+          missing=0
+          for img in $(grep -roh "images/[a-zA-Z0-9_./-]*\.\(jpe\?g\|png\|webp\|avif\|gif\|svg\)" --include="*.html" --include="*.css" --include="*.js" . | sort -u); do
+            if [ ! -f "$img" ]; then
+              echo "::warning::Missing image referenced: $img"
+              missing=$((missing + 1))
+            fi
+          done
+          echo "Total missing: $missing"
+          exit 0
