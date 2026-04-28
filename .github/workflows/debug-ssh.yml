@@ -1,0 +1,26 @@
+name: Debug SSH
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  debug:
+    name: Debug SSH auth
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write SSH key
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_debug
+          chmod 600 ~/.ssh/id_debug
+          echo "Saved debug key to ~/.ssh/id_debug"
+
+      - name: Show key fingerprint
+        run: |
+          ssh-keygen -lf ~/.ssh/id_debug || true
+
+      - name: Test SSH auth (verbose)
+        run: |
+          ssh -i ~/.ssh/id_debug -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -vvv ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} echo "SSH_OK"
