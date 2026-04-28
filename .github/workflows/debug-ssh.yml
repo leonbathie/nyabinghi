@@ -10,16 +10,23 @@ jobs:
     name: Debug SSH auth
     runs-on: ubuntu-latest
     steps:
-      - name: Write SSH key
+      - name: Write SSH key (sanitize CRLF)
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_debug
+          printf '%s' "${{ secrets.VPS_SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_debug
           chmod 600 ~/.ssh/id_debug
-          echo "Saved debug key to ~/.ssh/id_debug"
+          echo "Saved debug key to ~/.ssh/id_debug (CR removed)"
 
-      - name: Show key fingerprint
+      - name: Derive public key and show fingerprint
         run: |
-          ssh-keygen -lf ~/.ssh/id_debug || true
+          set -e
+          if ssh-keygen -y -f ~/.ssh/id_debug > ~/.ssh/id_debug.pub 2>/dev/null; then
+            echo "Derived public key saved to ~/.ssh/id_debug.pub"
+            ssh-keygen -lf ~/.ssh/id_debug.pub || true
+          else
+            echo "Failed to derive public key from private key" >&2
+            exit 0
+          fi
 
       - name: Prepare target and show lengths
         run: |
