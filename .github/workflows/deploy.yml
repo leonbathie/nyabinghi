@@ -21,44 +21,24 @@ jobs:
           ssh-keyscan -H 173.249.2.195 >> ~/.ssh/known_hosts
 
       - name: SSH and pull latest
+        env:
+          VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
         run: |
-          ssh -o StrictHostKeyChecking=no ousmane@173.249.2.195 'bash -s' << 'ENDSSH'
+          ssh -o StrictHostKeyChecking=no ousmane@173.249.2.195 "
             set -e
             cd /var/www/nyabinghi
             git fetch --all
             git reset --hard origin/main
             
-            # On écrit la configuration Nginx (port 8081)
-            cat << 'EOF' | sudo tee /etc/nginx/sites-available/nyabinghi > /dev/null
-            server {
-                listen 8081;
-                listen [::]:8081;
-                server_name 173.249.2.195;
-
-                root /var/www/nyabinghi;
-                index index.html;
-
-                location / {
-                    try_files $uri $uri/ =404;
-                }
-
-                # Cache assets statiques
-                location ~* \.(jpg|jpeg|png|webp|avif|gif|svg|css|js|woff2?)$ {
-                    expires 30d;
-                    add_header Cache-Control "public, immutable";
-                }
-
-                # Sécurité basique
-                add_header X-Frame-Options "SAMEORIGIN";
-                add_header X-Content-Type-Options "nosniff";
-            }
-            EOF
+            # On écrit la configuration avec base64 pour éviter tous les problèmes de syntaxe
+            echo 'c2VydmVyIHsKICAgIGxpc3RlbiA4MDgxOwogICAgbGlzdGVuIFs6Ol06ODA4MTsKICAgIHNlcnZlcl9uYW1lIDE3My4yNDkuMi4xOTU7CgogICAgcm9vdCAvdmFyL3d3dy9ueWFiaW5naGk7CiAgICBpbmRleCBpbmRleC5odG1sOwoKICAgIGxvY2F0aW9uIC8gewogICAgICAgIHRyeV9maWxlcyAkdXJpICR1cmkvID00MDQ7CiAgICB9CgogICAgIyBDYWNoZSBhc3NldHMgc3RhdGlxdWVzCiAgICBsb2NhdGlvbiB+KiBcLihqcGd8anBlZ3xwbmd8d2VicHxhdmlmfGdpZnxzdmd8Y3NzfGpzfHdvZmYyPykkIHsKICAgICAgICBleHBpcmVzIDMwZDsKICAgICAgICBhZGRfaGVhZGVyIENhY2hlLUNvbnRyb2wgInB1YmxpYywgaW1tdXRhYmxlIjsKICAgIH0KCiAgICAjIFPDqWN1cml0w6kgYmFzaXF1ZQogICAgYWRkX2hlYWRlciBYLUZyYW1lLU9wdGlvbnMgIlNBTUVPUklHSU4iOwogICAgYWRkX2hlYWRlciBYLUNvbnRlbnQtVHlwZS1PcHRpb25zICJub3NuaWZmIjsKfQ==' | base64 -d > /tmp/nyabinghi.conf
             
-            # Activation et rechargement de Nginx
-            sudo ln -sf /etc/nginx/sites-available/nyabinghi /etc/nginx/sites-enabled/
-            sudo nginx -t
-            sudo systemctl reload nginx
-            sudo ufw allow 8081/tcp
+            # Envoi du mot de passe GitHub à sudo pour appliquer la conf sans bloquer
+            echo \"\$VPS_PASSWORD\" | sudo -S mv /tmp/nyabinghi.conf /etc/nginx/sites-available/nyabinghi
+            echo \"\$VPS_PASSWORD\" | sudo -S ln -sf /etc/nginx/sites-available/nyabinghi /etc/nginx/sites-enabled/
+            echo \"\$VPS_PASSWORD\" | sudo -S nginx -t
+            echo \"\$VPS_PASSWORD\" | sudo -S systemctl reload nginx
+            echo \"\$VPS_PASSWORD\" | sudo -S ufw allow 8081/tcp
             
-            echo "✓ Deploiement reussi (Commit: $(git rev-parse --short HEAD))"
-          ENDSSH
+            echo \"✓ Deploiement MVC Nginx et Github (Port 8081) reussi !\"
+          "
