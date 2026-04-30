@@ -15,6 +15,84 @@ function init() {
   initCas3D();
   registerImageFallbacks();
   initSmoothScroll();
+  initScrollProgress();
+  initStatCounters();
+  initGalleryIcons();
+}
+
+// ----- Scroll progress bar -----
+function initScrollProgress() {
+  const bar = document.getElementById('scrollProgress');
+  if (!bar) return;
+  const onScroll = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    bar.style.width = pct + '%';
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// ----- Animated stat counters (in-view) -----
+function initStatCounters() {
+  const stats = document.querySelectorAll('.hero-stats .stat[data-count]');
+  if (!stats.length) return;
+
+  const animate = (el) => {
+    if (el.classList.contains('in-view')) return;
+    el.classList.add('in-view');
+    const target = parseFloat(el.dataset.count);
+    const decimals = parseInt(el.dataset.decimal || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    const suffixHtml = el.dataset.suffixHtml || '';
+    const numEl = el.querySelector('.stat-num');
+    if (!numEl) return;
+
+    const duration = 1400;
+    const start = performance.now();
+    const fmt = (n) => {
+      const fixed = n.toFixed(decimals);
+      // French-style decimal comma
+      return decimals > 0 ? fixed.replace('.', ',') : fixed;
+    };
+
+    const step = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+      const v = target * eased;
+      numEl.innerHTML = fmt(v) + (suffixHtml || suffix);
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    stats.forEach(animate);
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        animate(en.target);
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  stats.forEach(s => io.observe(s));
+}
+
+// ----- Inject zoom icons into gallery items -----
+function initGalleryIcons() {
+  const items = document.querySelectorAll('.gal-item');
+  items.forEach(it => {
+    if (it.querySelector('.gal-icon')) return;
+    const span = document.createElement('span');
+    span.className = 'gal-icon';
+    span.innerHTML = '<i data-lucide="maximize-2"></i>';
+    it.appendChild(span);
+  });
+  refreshIcons();
 }
 
 // ----- Casamance 3D mouse tilt -----

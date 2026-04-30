@@ -784,3 +784,150 @@ section{padding:120px 0;position:relative;scroll-margin-top:90px}
   .marquee-track span{gap:40px}
   .hero h1::after{display:none}
 }
+
+/* =====================================================================
+   ════════════════ REFINEMENTS V2 — POETIC TOUCHES ════════════════
+   Vagues SVG · compteur stats · \u00e9toiles dor\u00e9es · gallery hover
+   ===================================================================== */
+
+/* ----- Wave separators between sections ----- */
+.wave-row{
+  position:relative;line-height:0;display:block;overflow:hidden;
+  margin-top:-1px;margin-bottom:-1px;pointer-events:none;
+}
+.wave-row svg{display:block;width:100%;height:60px}
+@media(max-width:768px){.wave-row svg{height:40px}}
+.wave-row.flip svg{transform:scaleY(-1)}
+.wave-row.thin svg{height:40px}
+
+/* ----- Hero stats: animated counter look ----- */
+.hero-stats .stat-num{
+  position:relative;display:inline-block;
+  font-feature-settings:"tnum" 1;
+}
+.hero-stats .stat[data-count]:not(.in-view) .stat-num{opacity:.4}
+.hero-stats .stat.in-view .stat-num{
+  animation:countPulse .6s ease;
+}
+@keyframes countPulse{
+  0%{transform:scale(.94);opacity:.5}
+  60%{transform:scale(1.04);opacity:1}
+  100%{transform:scale(1);opacity:1}
+}
+
+/* ----- Reviews: golden stars + rating ----- */
+.rev-stars{
+  display:flex;justify-content:center;gap:4px;margin-bottom:18px;
+  color:var(--gold);
+}
+.rev-stars i{width:20px;height:20px;fill:currentColor;stroke:currentColor}
+.rev-rating{
+  text-align:center;font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-soft);
+  margin-bottom:30px;display:flex;align-items:center;justify-content:center;gap:12px;
+}
+.rev-rating::before, .rev-rating::after{
+  content:"";width:24px;height:1px;background:var(--gold-soft);opacity:.5;
+}
+.rev-rating strong{color:var(--cream);font-weight:400;font-size:15px;letter-spacing:.18em}
+
+/* ----- Gallery enhanced hover: zoom + caption rise ----- */
+.gal-item{position:relative;cursor:zoom-in;overflow:hidden}
+.gal-item img{
+  transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .5s ease;
+}
+.gal-item:hover img{transform:scale(1.08);filter:brightness(.85)}
+.gal-item::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(20,20,15,.55) 100%);
+  opacity:0;transition:opacity .5s ease;pointer-events:none;
+}
+.gal-item:hover::after{opacity:1}
+.gal-item .gal-icon{
+  position:absolute;top:50%;left:50%;width:50px;height:50px;
+  border:1px solid rgba(246,239,223,.7);border-radius:50%;
+  display:grid;place-items:center;
+  transform:translate(-50%,-50%) scale(.6);opacity:0;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s ease;
+  background:rgba(20,20,15,.25);backdrop-filter:blur(4px);z-index:2;
+  pointer-events:none;
+}
+.gal-item .gal-icon i{width:18px;height:18px;color:var(--cream)}
+.gal-item:hover .gal-icon{transform:translate(-50%,-50%) scale(1);opacity:1}
+
+/* ----- Aerial subtle parallax via background-attachment ----- */
+@media(min-width:900px) and (hover:hover){
+  .aerial{background-attachment:fixed;background-size:cover;background-position:center}
+}
+
+/* ----- Section breath: floating ornamental "N" watermark on culture ----- */
+.culture::before{
+  content:"";z-index:0;
+}
+.cul-grid{position:relative;z-index:1}
+
+/* ----- Subtle decorative leaf SVG on pool/beach text ----- */
+.pool-text, .beach-text{position:relative}
+.pool-text::before{
+  content:"";position:absolute;top:-30px;left:-20px;width:90px;height:90px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='none' stroke='%23B85C2E' stroke-width='1' opacity='.35'><path d='M50 10 Q70 30 50 50 Q30 70 50 90'/><path d='M50 10 Q30 30 50 50 Q70 70 50 90'/><path d='M50 10 L50 90'/></g></svg>");
+  background-size:contain;background-repeat:no-repeat;z-index:0;pointer-events:none;
+}
+.pool-text > *{position:relative;z-index:1}
+
+/* ----- Casamance stylized SVG mini-map ----- */
+.cas-mini{
+  display:inline-flex;align-items:center;gap:10px;margin-top:18px;
+  font-family:'Inter';font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.cas-mini svg{width:54px;height:30px}
+.cas-mini .pin{fill:var(--terra)}
+
+/* ----- Footer: ornamental compass rose ----- */
+.footer-grid > div:first-child{position:relative}
+
+/* ----- Reviews quote: drop cap on the open-quote glyph ----- */
+.rev-q::first-letter{
+  font-family:'Fraunces',serif;font-size:1.4em;color:var(--gold-soft);
+  font-style:italic;
+}
+
+/* ----- Buttons: sharper focus state for accessibility + premium feel ----- */
+.btn:focus-visible, .stay-cta:focus-visible, .lang-btn:focus-visible, .footer-news button:focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;
+}
+
+/* ----- Sticky scroll progress bar (top of page) ----- */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:2px;width:0;z-index:200;
+  background:linear-gradient(90deg,var(--gold-soft),var(--terra),var(--gold));
+  transition:width .12s linear;pointer-events:none;
+}
+
+/* ----- Cursor refinement for image links (zoom hint) ----- */
+.gal-item, .stay-img, .cul-tile.with-img{cursor:pointer}
+
+/* ----- Refined hero scroll-hint with mouse silhouette ----- */
+.scroll-hint{display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-hint .bar{display:none}
+.scroll-hint::after{
+  content:"";display:block;width:18px;height:28px;border:1px solid rgba(246,239,223,.55);
+  border-radius:12px;position:relative;
+}
+.scroll-hint{position:absolute}
+.scroll-hint > span:first-child{
+  font-family:'Inter';font-size:10px;letter-spacing:.4em;text-transform:uppercase;
+  color:rgba(246,239,223,.55);
+}
+/* Fake "wheel" inside the mouse */
+.scroll-hint::before{
+  content:"";position:absolute;bottom:5px;left:50%;width:2px;height:6px;
+  background:var(--gold-soft);border-radius:2px;transform:translateX(-50%);
+  animation:scrollWheel 1.7s cubic-bezier(.6,0,.4,1) infinite;
+}
+@keyframes scrollWheel{
+  0%{transform:translate(-50%,0);opacity:0}
+  35%{opacity:1}
+  100%{transform:translate(-50%,-12px);opacity:0}
+}

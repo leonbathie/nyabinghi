@@ -141,6 +141,7 @@ window.translations = {
 
     "reviews.eyebrow": "Témoignages",
     "reviews.title": "Ce qu'ils en disent.",
+    "reviews.rating": "Note moyenne · 240+ avis",
     "reviews.q1": "« Une bulle de calme et d'authenticité. La cuisine est divine, le personnel attentionné, et le coucher de soleil sur la plage… inoubliable. On reviendra. »",
     "reviews.q2": "« Far from the tourist crowd, Nyabinghi feels like a real escape. Simple comforts, deep peace, and the most generous welcome. A treasure of Casamance. »",
     "reviews.q3": "« Lugar mágico para desconectar. Las cabañas de tierra son preciosas, la playa privada increíble, y la familia que lleva el camp te hace sentir en casa. »",
@@ -322,6 +323,7 @@ window.translations = {
 
     "reviews.eyebrow": "Reviews",
     "reviews.title": "What guests say.",
+    "reviews.rating": "Average rating · 240+ reviews",
     "reviews.source": "Google · Tripadvisor · Booking reviews",
 
     "cta.eyebrow": "Booking",
@@ -499,6 +501,7 @@ window.translations = {
 
     "reviews.eyebrow": "Reseñas",
     "reviews.title": "Lo que dicen los huéspedes.",
+    "reviews.rating": "Valoración media · 240+ reseñas",
     "reviews.source": "Reseñas Google · Tripadvisor · Booking",
 
     "cta.eyebrow": "Reserva",

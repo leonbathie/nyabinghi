@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <!-- =============== NAV =============== -->
 <nav class="nav" id="nav">
@@ -93,15 +94,15 @@
       <a href="#contact" class="btn btn-ghost" data-i18n="hero.cta2">Réserver</a>
     </div>
     <div class="hero-meta">
-      <div class="stat">
+      <div class="stat" data-count="15" data-suffix="+">
         <div class="stat-num">15+</div>
         <div class="stat-lbl" data-i18n="hero.stat1">Années d'accueil</div>
       </div>
-      <div class="stat">
+      <div class="stat" data-count="100" data-suffix-html="<span style='font-size:.6em'>m</span>">
         <div class="stat-num">100<span style="font-size:.6em">m</span></div>
         <div class="stat-lbl" data-i18n="hero.stat2">de la plage</div>
       </div>
-      <div class="stat">
+      <div class="stat" data-count="4.8" data-decimal="1" data-suffix-html="<span style='font-size:.6em'>/5</span>">
         <div class="stat-num">4,8<span style="font-size:.6em">/5</span></div>
         <div class="stat-lbl" data-i18n="hero.stat3">Avis voyageurs</div>
       </div>
@@ -238,7 +239,7 @@
       <div class="beach-text reveal">
         <span class="eyebrow" data-i18n="beach.eyebrow">À la plage</span>
         <h2 data-i18n="beach.title">Une terrasse en bambou, face au large.</h2>
-        <p data-i18n="beach.p1">Au bout du jardin, après l'allée de palmiers, notre paillote en bambou domine la plage. Chaises longues, hamacs, et la mer à perte de vue.</p>
+        <p class="dropcap" data-i18n="beach.p1">Au bout du jardin, après l'allée de palmiers, notre paillote en bambou domine la plage. Chaises longues, hamacs, et la mer à perte de vue.</p>
         <p data-i18n="beach.p2">Le bar y sert des jus de bissap, des cocktails au gingembre, et des plats inspirés du jour. La terrasse est aussi le théâtre des couchers de soleil les plus saisissants de la côte.</p>
         <a href="#experiences" class="btn-link" data-i18n="beach.cta">Voir les expériences <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
       </div>
@@ -253,7 +254,7 @@
       <div class="pool-text reveal">
         <span class="eyebrow" data-i18n="pool.eyebrow">L'oasis</span>
         <h2 data-i18n="pool.title">Une piscine, à l'ombre des manguiers.</h2>
-        <p data-i18n="pool.p1">Au cœur du jardin, une piscine d'eau turquoise se révèle entre les manguiers et les bougainvillées. C'est l'oasis du camp — pour piquer une tête entre deux baignades en mer, ou simplement lire à l'ombre d'un parasol en paille.</p>
+        <p class="dropcap" data-i18n="pool.p1">Au cœur du jardin, une piscine d'eau turquoise se révèle entre les manguiers et les bougainvillées. C'est l'oasis du camp — pour piquer une tête entre deux baignades en mer, ou simplement lire à l'ombre d'un parasol en paille.</p>
         <p data-i18n="pool.p2">Les transats en wax kente jaune ponctuent le patio carrelé, et les manguiers laissent tomber leurs fruits à portée de main pendant la saison.</p>
         <ul class="pool-feats">
           <li><i data-lucide="sun"></i><span data-i18n="pool.f1">Eau turquoise toute l'année</span></li>
@@ -391,6 +392,17 @@
   </div>
 </section>
 
+<!-- Wave separator (organic transition) -->
+<div class="wave-row" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 Q180,50 360,30 T720,30 T1080,30 T1440,30 L1440,60 L0,60 Z" fill="#F6EFDF"/>
+    <path d="M0,30 Q180,50 360,30 T720,30 T1080,30 T1440,30" fill="none" stroke="#D4A24C" stroke-width="1" opacity=".35"/>
+    <circle cx="360" cy="32" r="2" fill="#B85C2E" opacity=".55"/>
+    <circle cx="720" cy="32" r="2" fill="#B85C2E" opacity=".55"/>
+    <circle cx="1080" cy="32" r="2" fill="#B85C2E" opacity=".55"/>
+  </svg>
+</div>
+
 <!-- =============== ESPRIT DIOLA — culture =============== -->
 <section id="culture" class="culture">
   <div class="container">
@@ -495,27 +507,28 @@
     <div class="section-head center reveal">
       <span class="eyebrow" data-i18n="reviews.eyebrow">Témoignages</span>
       <h2 data-i18n="reviews.title">Ce qu'ils en disent.</h2>
+      <div class="rev-rating"><strong>4,9/5</strong> <span data-i18n="reviews.rating">Note moyenne · 240+ avis</span></div>
     </div>
     <div class="rev-wrap">
       <div class="rev-track">
         <div class="rev-slider" id="revSlider">
           <div class="rev-slide">
-            <div class="stars">★★★★★</div>
+            <div class="rev-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
             <blockquote data-i18n="reviews.q1">« Une bulle de calme et d'authenticité. La cuisine est divine, le personnel attentionné, et le coucher de soleil sur la plage… inoubliable. On reviendra. »</blockquote>
             <cite>Camille &amp; Antoine · France</cite>
           </div>
           <div class="rev-slide">
-            <div class="stars">★★★★★</div>
+            <div class="rev-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
             <blockquote data-i18n="reviews.q2">« Far from the tourist crowd, Nyabinghi feels like a real escape. Simple comforts, deep peace, and the most generous welcome. A treasure of Casamance. »</blockquote>
             <cite>Sarah · United Kingdom</cite>
           </div>
           <div class="rev-slide">
-            <div class="stars">★★★★★</div>
+            <div class="rev-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
             <blockquote data-i18n="reviews.q3">« Lugar mágico para desconectar. Las cabañas de tierra son preciosas, la playa privada increíble, y la familia que lleva el camp te hace sentir en casa. »</blockquote>
             <cite>Lucía · España</cite>
           </div>
           <div class="rev-slide">
-            <div class="stars">★★★★★</div>
+            <div class="rev-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
             <blockquote data-i18n="reviews.q4">« Adresse confidentielle, qu'on a presque envie de garder pour soi. Cases ravissantes, table généreuse, balades en pirogue… Tout y est juste. »</blockquote>
             <cite>Mathieu · Belgique</cite>
           </div>
