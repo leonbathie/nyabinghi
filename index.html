@@ -36,6 +36,7 @@
       <li><a href="#story" data-i18n="nav.about">L'esprit</a></li>
       <li><a href="#stays" data-i18n="nav.stays">Hébergements</a></li>
       <li><a href="#experiences" data-i18n="nav.exp">Expériences</a></li>
+      <li><a href="#culture" data-i18n="nav.culture">Culture</a></li>
       <li><a href="#casamance" data-i18n="nav.region">Casamance</a></li>
       <li><a href="#gallery" data-i18n="nav.gallery">Galerie</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
@@ -61,6 +62,7 @@
   <a href="#story" data-i18n="nav.about">L'esprit</a>
   <a href="#stays" data-i18n="nav.stays">Hébergements</a>
   <a href="#experiences" data-i18n="nav.exp">Expériences</a>
+  <a href="#culture" data-i18n="nav.culture">Culture</a>
   <a href="#casamance" data-i18n="nav.region">Casamance</a>
   <a href="#gallery" data-i18n="nav.gallery">Galerie</a>
   <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -76,6 +78,8 @@
     <div class="hero-slide" data-bg="images/05_plage_terrasse.webp"></div>
     <div class="hero-slide" data-bg="images/09_case_exterieure_palmier.jpg"></div>
   </div>
+  <div class="hero-ornament" aria-hidden="true"><span data-i18n="hero.ornament">N°001 · Édition Casamance</span></div>
+  <div class="hero-dots" id="heroDots" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-eyebrow">
       <span class="line"></span>
@@ -109,14 +113,23 @@
   </div>
 </header>
 
+<!-- =============== MARQUEE CULTUREL =============== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span><em>Bolongs</em><span class="dot"></span><em>Wax kente</em><span class="dot"></span><em>Bissap</em><span class="dot"></span><em>Yassa poulet</em><span class="dot"></span><em>Pirogues</em><span class="dot"></span><em>Djembé</em><span class="dot"></span><em>Riz de Casamance</em><span class="dot"></span><em>Bougainvillier</em><span class="dot"></span><em>Bara</em><span class="dot"></span><em>Forets sacrees</em><span class="dot"></span></span>
+    <span><em>Bolongs</em><span class="dot"></span><em>Wax kente</em><span class="dot"></span><em>Bissap</em><span class="dot"></span><em>Yassa poulet</em><span class="dot"></span><em>Pirogues</em><span class="dot"></span><em>Djembé</em><span class="dot"></span><em>Riz de Casamance</em><span class="dot"></span><em>Bougainvillier</em><span class="dot"></span><em>Bara</em><span class="dot"></span><em>Forets sacrees</em><span class="dot"></span></span>
+  </div>
+</div>
+
 <!-- =============== STORY =============== -->
 <section id="story" class="story">
   <div class="container">
     <div class="story-grid">
       <div class="story-text reveal">
+        <span class="sec-num" data-i18n="sec.01">N° 01 — L'esprit</span>
         <span class="eyebrow" data-i18n="story.eyebrow">L'esprit du lieu</span>
         <h2 data-i18n="story.title">L'Afrique, à hauteur d'âme.</h2>
-        <p data-i18n="story.p1">Nyabinghi n'est pas un hôtel. C'est un campement, dans le sens le plus noble du terme : une halte habitée, des cases en terre crue dressées sous les cocotiers, et une lumière dorée qui filtre toute la journée à travers les palmes.</p>
+        <p class="dropcap" data-i18n="story.p1">Nyabinghi n'est pas un hôtel. C'est un campement, dans le sens le plus noble du terme : une halte habitée, des cases en terre crue dressées sous les cocotiers, et une lumière dorée qui filtre toute la journée à travers les palmes.</p>
         <p data-i18n="story.p2">À deux pas de l'océan, loin du tumulte et des resorts, vous découvrez la Casamance comme on l'a toujours rêvée — vraie, généreuse, vivante.</p>
         <div class="tags">
           <span class="tag"><i data-lucide="palmtree" style="width:14px;height:14px"></i><span data-i18n="story.t1">Plage privée</span></span>
@@ -149,6 +162,7 @@
 <section id="stays" class="stays">
   <div class="container">
     <div class="section-head reveal">
+      <span class="sec-num" data-i18n="sec.02">N° 02 — Hébergements</span>
       <span class="eyebrow" data-i18n="stays.eyebrow">Hébergements</span>
       <h2 data-i18n="stays.title">Trois manières d'habiter le lieu.</h2>
       <p data-i18n="stays.p">Toutes les chambres sont en matériaux locaux : terre crue, bambou, paille tressée. Confort sobre, charme authentique.</p>
@@ -158,6 +172,7 @@
       <article class="stay-card reveal">
         <div class="stay-img">
           <img src="images/16_chambre_case_double.webp" alt="Chambre en case avec lit double" loading="lazy" />
+          <span class="stay-num">01</span>
           <span class="stay-tag" data-i18n="stays.c1.tag">Iconique</span>
           <span class="stay-pax"><i data-lucide="users" style="width:13px;height:13px"></i> 2</span>
         </div>
@@ -176,6 +191,7 @@
       <article class="stay-card reveal">
         <div class="stay-img">
           <img src="images/17_chambre_confort_3_lits.webp" alt="Chambre confort 3 lits" loading="lazy" />
+          <span class="stay-num">02</span>
           <span class="stay-tag hot" data-i18n="stays.c2.tag">Famille</span>
           <span class="stay-pax"><i data-lucide="users" style="width:13px;height:13px"></i> 3-4</span>
         </div>
@@ -194,6 +210,7 @@
       <article class="stay-card reveal">
         <div class="stay-img">
           <img src="images/14_case_jardin_face.jpg" alt="Case avec terrasse côté jardin" loading="lazy" decoding="async" />
+          <span class="stay-num">03</span>
           <span class="stay-tag" data-i18n="stays.c3.tag">Romantique</span>
           <span class="stay-pax"><i data-lucide="users" style="width:13px;height:13px"></i> 2</span>
         </div>
@@ -257,13 +274,14 @@
 <section id="experiences" class="experiences">
   <div class="container">
     <div class="section-head center reveal">
+      <span class="sec-num" data-i18n="sec.04">N° 04 — Expériences</span>
       <span class="eyebrow" data-i18n="exp.eyebrow">Expériences</span>
       <h2 data-i18n="exp.title">Vivre la Casamance, autrement.</h2>
       <p data-i18n="exp.p">Six expériences locales, organisées avec nos partenaires de la région, pour rencontrer les habitants, la nature, et les rythmes de la Basse-Casamance.</p>
     </div>
     <div class="exp-grid">
 
-      <article class="exp-card reveal">
+      <article class="exp-card reveal featured">
         <img src="images/19_plage_pirogues.webp" alt="Pirogues colorées sur la plage" loading="lazy" />
         <div class="exp-body">
           <div class="icon"><i data-lucide="ship"></i></div>
@@ -373,10 +391,77 @@
   </div>
 </section>
 
+<!-- =============== ESPRIT DIOLA — culture =============== -->
+<section id="culture" class="culture">
+  <div class="container">
+    <div class="cul-head reveal">
+      <div>
+        <span class="sec-num" data-i18n="sec.05">N° 05 — Esprit Diola</span>
+        <span class="eyebrow" data-i18n="cul.eyebrow">L'âme casamançaise</span>
+        <h2 data-i18n="cul.title">Une culture qui se vit, pas qui se visite.</h2>
+      </div>
+      <p class="cul-intro" data-i18n="cul.intro">Six fenêtres ouvertes sur la Casamance qu'on aime — celle des saveurs, des langues, du fleuve et des forêts sacrées. Tout ce que vous goûterez, entendrez, croiserez à Nyabinghi.</p>
+    </div>
+
+    <div class="cul-grid">
+
+      <article class="cul-tile with-img span-2 reveal-up">
+        <img src="images/04_decoration_masque.webp" alt="Masque africain et saveurs locales" loading="lazy" />
+        <div class="cul-body">
+          <span class="cul-tag font-script" data-i18n="cul.t1.tag">Saveurs</span>
+          <h3 data-i18n="cul.t1.title">Yassa, mafé, thiéboudienne</h3>
+          <p data-i18n="cul.t1.p">La cuisine de Maman Aïda mijote au feu de bois. Poisson grillé du jour, riz au gras, sauce à l'arachide — tout vient des marchés et de la mer.</p>
+        </div>
+      </article>
+
+      <article class="cul-tile t-terra reveal-up">
+        <div class="cul-icon"><i data-lucide="drum"></i></div>
+        <span class="cul-tag font-script" data-i18n="cul.t2.tag">Le rythme</span>
+        <h3 data-i18n="cul.t2.title">Le djembé du soir</h3>
+        <p data-i18n="cul.t2.p">Quand le soleil tombe, les tambours se réveillent. Bara, sabar, djembé — une langue qui se parle avec les mains.</p>
+      </article>
+
+      <article class="cul-tile t-teal reveal-up">
+        <div class="cul-icon"><i data-lucide="message-circle"></i></div>
+        <span class="cul-tag font-script" data-i18n="cul.t3.tag">La langue</span>
+        <h3 data-i18n="cul.t3.title">Kassoumaye !</h3>
+        <p data-i18n="cul.t3.p">« La paix soit avec vous. » En diola, on ne se salue pas — on se souhaite. Une langue tendre, taillée pour les retrouvailles.</p>
+      </article>
+
+      <article class="cul-tile with-img reveal-up">
+        <img src="images/19_plage_pirogues.webp" alt="Pirogues dans les bolongs" loading="lazy" />
+        <div class="cul-body">
+          <span class="cul-tag font-script" data-i18n="cul.t4.tag">Le fleuve</span>
+          <h3 data-i18n="cul.t4.title">Le labyrinthe des bolongs</h3>
+          <p data-i18n="cul.t4.p">Bras de mer entre les mangroves, théâtre des pêcheurs et des hérons.</p>
+        </div>
+      </article>
+
+      <article class="cul-tile t-gold reveal-up">
+        <div class="cul-icon"><i data-lucide="wheat"></i></div>
+        <span class="cul-tag font-script" data-i18n="cul.t5.tag">La terre</span>
+        <h3 data-i18n="cul.t5.title">Le riz de Casamance</h3>
+        <p data-i18n="cul.t5.p">Cultivé à la main dans les rizières inondées, le riz rouge des Diolas accompagne tous les repas.</p>
+      </article>
+
+      <article class="cul-tile with-img span-2 reveal-up">
+        <img src="images/15_arbre_fromager.webp" alt="Arbre fromager sacré" loading="lazy" />
+        <div class="cul-body">
+          <span class="cul-tag font-script" data-i18n="cul.t6.tag">Sacré</span>
+          <h3 data-i18n="cul.t6.title">Sous les fromagers</h3>
+          <p data-i18n="cul.t6.p">Les forêts sacrées de la région veillent sur les villages depuis des siècles. On y entre en silence, pieds nus, le cœur léger.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <!-- =============== GALLERY =============== -->
 <section id="gallery" class="gallery">
   <div class="container">
     <div class="section-head center reveal">
+      <span class="sec-num" data-i18n="sec.06">N° 06 — Galerie</span>
       <span class="eyebrow" data-i18n="gallery.eyebrow">Galerie</span>
       <h2 data-i18n="gallery.title">Le camp, en images.</h2>
       <p data-i18n="gallery.p">Cliquez sur une photo pour l'agrandir.</p>
@@ -542,6 +627,18 @@
 <!-- =============== FOOTER =============== -->
 <footer class="footer">
   <div class="container">
+    <!-- Newsletter -->
+    <div class="footer-news reveal">
+      <div>
+        <h4 data-i18n="news.title">Recevez les nouvelles d'Abené</h4>
+        <p data-i18n="news.desc">Une carte postale par saison — saveurs, lumières et bons plans. Aucun spam, jamais.</p>
+      </div>
+      <form onsubmit="event.preventDefault();this.querySelector('input').value='';this.querySelector('button').textContent=this.getAttribute('data-ok')||'Merci !';" data-ok="Merci !">
+        <input type="email" required data-i18n-placeholder="news.ph" placeholder="votre@email.com" />
+        <button type="submit" data-i18n="news.cta">S'inscrire</button>
+      </form>
+    </div>
+
     <div class="footer-grid">
       <div>
         <a href="#top" class="brand" style="display:inline-flex">

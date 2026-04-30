@@ -4,6 +4,10 @@
   --terra:#B85C2E;--terra-2:#8C3F1E;--terra-light:#F2C492;
   --olive:#6E7A4F;--ocean:#1E3D4C;--ocean-2:#14242E;
   --ink:#1A1410;--ink-soft:#3A2F26;
+  /* Casamance editorial palette */
+  --gold:#D4A24C;--gold-soft:#E8C77A;
+  --teal:#2C7873;--teal-deep:#1B4A47;
+  --kente-yellow:#E6B632;--kente-red:#A8331E;--kente-green:#3F6E4D;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
@@ -461,3 +465,322 @@ section{padding:120px 0;position:relative;scroll-margin-top:90px}
 @media(max-width:1180px){.nav .btn-primary.hide-mobile{display:none}}
 
 ::selection{background:var(--terra);color:var(--cream)}
+
+/* =====================================================================
+   ════════════════ EDITORIAL UPGRADE — CASAMANCE ════════════════
+   Marquee culturel · drop caps · numérotation · motifs ethniques
+   Esprit Diola section · vagues décoratives · newsletter
+   ===================================================================== */
+
+/* ----- Subtle paper noise overlay on light sections ----- */
+.story::before, .pool::after, .gallery::before, .contact::before, .culture::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.035;z-index:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  mix-blend-mode:multiply;
+}
+.story, .pool, .gallery, .contact, .culture{position:relative}
+.story > .container, .pool > .container, .gallery > .container, .contact > .container, .culture > .container{position:relative;z-index:1}
+
+/* ----- Decorative bogolan-inspired horizontal pattern ----- */
+.bogolan-divider{
+  height:14px;background-repeat:repeat-x;background-position:center;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='14' viewBox='0 0 120 14'><g fill='none' stroke='%23B85C2E' stroke-width='1.4'><path d='M0 7 L120 7' opacity='.4'/><path d='M10 2 L20 12 M30 12 L40 2 M50 2 L60 12 M70 12 L80 2 M90 2 L100 12 M110 12 L118 4'/><circle cx='25' cy='7' r='1.6' fill='%23D4A24C' stroke='none'/><circle cx='65' cy='7' r='1.6' fill='%23D4A24C' stroke='none'/><circle cx='105' cy='7' r='1.6' fill='%23D4A24C' stroke='none'/></g></svg>");
+  opacity:.55;margin:0 auto;width:min(360px,80%);
+}
+
+/* ----- Section number (editorial nº01 / 02 / 03) ----- */
+.sec-num{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  font-size:13px;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--terra);display:inline-flex;align-items:center;gap:14px;
+  margin-bottom:14px;
+}
+.sec-num::before{
+  content:"";width:36px;height:1px;background:currentColor;opacity:.6;
+}
+.stays .sec-num, .reviews .sec-num{color:var(--gold-soft)}
+
+/* ----- Drop cap on first paragraph ----- */
+.dropcap::first-letter{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:5em;line-height:.85;
+  float:left;padding:6px 12px 0 0;color:var(--terra);font-weight:300;
+}
+@media(max-width:600px){.dropcap::first-letter{font-size:4em}}
+
+/* ============ HERO ENHANCED ============ */
+.hero{padding-bottom:90px}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 30% 100%,rgba(184,92,46,.18),transparent 55%),
+    radial-gradient(ellipse at 90% 0%,rgba(212,162,76,.14),transparent 50%);
+}
+/* Lettering animation on h1 */
+.hero h1{position:relative;display:inline-block}
+.hero h1::after{
+  content:"";position:absolute;bottom:-6px;left:0;height:2px;width:0;
+  background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);
+  animation:heroUnder 1.6s cubic-bezier(.2,.8,.2,1) .3s forwards;
+}
+@keyframes heroUnder{to{width:100%}}
+
+/* Vertical slide indicators */
+.hero-dots{
+  position:absolute;right:34px;top:50%;transform:translateY(-50%);z-index:3;
+  display:flex;flex-direction:column;gap:14px;
+}
+.hero-dots .hd{
+  width:1px;height:34px;background:rgba(246,239,223,.3);
+  border:none;padding:0;cursor:pointer;position:relative;
+  transition:background .35s ease;
+}
+.hero-dots .hd::after{
+  content:"";position:absolute;left:-3px;top:0;width:7px;height:0;
+  background:var(--gold-soft);transition:height 5.8s linear;
+}
+.hero-dots .hd.active{background:rgba(246,239,223,.6)}
+.hero-dots .hd.active::after{height:100%}
+@media(max-width:768px){.hero-dots{right:18px;gap:10px}.hero-dots .hd{height:24px}}
+
+/* Hero corner ornament */
+.hero-ornament{
+  position:absolute;left:34px;top:50%;transform:translateY(-50%);z-index:3;
+  writing-mode:vertical-rl;font-family:'Inter';font-size:10px;
+  letter-spacing:.45em;text-transform:uppercase;color:rgba(246,239,223,.55);
+  display:flex;align-items:center;gap:18px;
+}
+.hero-ornament::before{content:"";width:1px;height:60px;background:rgba(246,239,223,.4)}
+@media(max-width:900px){.hero-ornament{display:none}}
+
+/* ============ MARQUEE CULTUREL ============ */
+.marquee{
+  position:relative;background:var(--ink);color:var(--cream);
+  padding:22px 0;overflow:hidden;border-top:1px solid rgba(246,239,223,.06);border-bottom:1px solid rgba(246,239,223,.06);
+}
+.marquee-track{
+  display:flex;gap:60px;
+  animation:scroll 38s linear infinite;
+  width:max-content;
+  font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  font-size:clamp(28px,3.6vw,46px);letter-spacing:-.01em;white-space:nowrap;
+}
+.marquee-track span{display:inline-flex;align-items:center;gap:60px;flex-shrink:0}
+.marquee-track .dot{
+  display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;
+}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============ STORY ENHANCED ============ */
+.story-text .dropcap{font-size:18px;line-height:1.75}
+.story-img{position:relative}
+.story-img::after{
+  content:"";position:absolute;top:-20px;right:-20px;width:130px;height:130px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='none' stroke='%23B85C2E' stroke-width='1.2' opacity='.55'><circle cx='50' cy='50' r='38'/><circle cx='50' cy='50' r='30' stroke-dasharray='2 4'/><path d='M50 12 L50 88 M12 50 L88 50' opacity='.5'/></g></svg>");
+  background-size:contain;background-repeat:no-repeat;z-index:-1;
+}
+
+/* ============ STAYS ENHANCED ============ */
+.stay-card{position:relative}
+.stay-card .stay-num{
+  position:absolute;top:18px;right:18px;z-index:3;
+  font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  font-size:48px;line-height:1;color:rgba(246,239,223,.85);
+  text-shadow:0 4px 14px rgba(0,0,0,.4);
+}
+
+/* ============ EXPERIENCES ENHANCED ============ */
+.exp-card{transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.exp-card:hover{transform:translateY(-6px)}
+.exp-body .icon{transition:transform .5s ease,background .3s}
+.exp-card:hover .exp-body .icon{transform:rotate(-12deg) scale(1.05);background:rgba(212,162,76,.4)}
+/* Magazine-style ribbon for first card */
+.exp-card.featured::after{
+  content:"signature";position:absolute;top:18px;right:-30px;z-index:3;
+  background:var(--gold);color:var(--ink);
+  font-family:'Inter';font-size:10px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;
+  padding:6px 36px;transform:rotate(35deg);box-shadow:0 6px 14px -4px rgba(0,0,0,.3);
+}
+
+/* ============ ESPRIT DIOLA — culture mosaic ============ */
+.culture{
+  background:var(--cream);position:relative;overflow:hidden;
+}
+.culture::after{
+  content:"";position:absolute;width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,162,76,.16),transparent 70%);
+  top:-180px;right:-160px;pointer-events:none;
+}
+.cul-head{display:grid;grid-template-columns:1fr;gap:30px;margin-bottom:60px;align-items:end}
+@media(min-width:900px){.cul-head{grid-template-columns:1.2fr 1fr;gap:60px}}
+.cul-head h2{font-size:clamp(38px,5vw,68px);margin:18px 0 0;line-height:1.04}
+.cul-head .cul-intro{font-size:17px;color:var(--ink-soft);max-width:480px;margin:0}
+
+.cul-grid{
+  display:grid;grid-template-columns:1fr;gap:18px;
+  grid-auto-flow:dense;
+}
+@media(min-width:680px){.cul-grid{grid-template-columns:repeat(3,1fr);gap:22px}}
+@media(min-width:1024px){.cul-grid{grid-template-columns:repeat(4,1fr)}}
+
+.cul-tile{
+  position:relative;border-radius:8px;overflow:hidden;
+  background:var(--ocean);color:var(--cream);
+  padding:30px;min-height:240px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;
+  box-shadow:0 18px 36px -16px rgba(20,36,46,.3);
+  isolation:isolate;
+}
+.cul-tile:hover{transform:translateY(-4px);box-shadow:0 28px 50px -18px rgba(20,36,46,.45)}
+
+.cul-tile.with-img{padding:0;min-height:340px}
+.cul-tile.with-img img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  z-index:-1;transition:transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.cul-tile.with-img:hover img{transform:scale(1.06)}
+.cul-tile.with-img::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(20,36,46,0) 30%,rgba(20,36,46,.88) 100%);
+}
+.cul-tile.with-img .cul-body{padding:30px}
+
+.cul-tile .cul-icon{
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(246,239,223,.14);backdrop-filter:blur(6px);margin-bottom:20px;
+}
+.cul-tile .cul-icon i{width:20px;height:20px;color:var(--gold-soft)}
+.cul-tile h3{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  color:var(--cream);font-size:26px;margin:0 0 8px;
+}
+.cul-tile p{font-size:14px;color:rgba(246,239,223,.82);margin:0;line-height:1.55}
+.cul-tile .cul-tag{
+  display:inline-block;font-family:'Caveat',cursive;font-size:22px;
+  color:var(--gold-soft);margin-bottom:6px;line-height:1;
+}
+
+/* Color variants */
+.cul-tile.t-terra{background:linear-gradient(135deg,var(--terra) 0%,var(--terra-2) 100%)}
+.cul-tile.t-teal{background:linear-gradient(135deg,var(--teal) 0%,var(--teal-deep) 100%)}
+.cul-tile.t-gold{background:linear-gradient(135deg,var(--gold) 0%,#A87C30 100%);color:var(--ink)}
+.cul-tile.t-gold h3,.cul-tile.t-gold p{color:var(--ink)}
+.cul-tile.t-gold .cul-icon{background:rgba(26,20,16,.12)}
+.cul-tile.t-gold .cul-icon i{color:var(--terra-2)}
+.cul-tile.t-gold .cul-tag{color:var(--terra-2)}
+
+.cul-tile.span-2{grid-column:span 1}
+@media(min-width:680px){.cul-tile.span-2{grid-column:span 2;min-height:320px}}
+
+/* ============ CTA banner ENHANCED ============ */
+.cta-banner::before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:
+    repeating-linear-gradient(45deg,rgba(212,162,76,.05) 0 6px,transparent 6px 22px),
+    radial-gradient(ellipse at center,rgba(184,92,46,.25),transparent 60%);
+}
+.cta-banner h2{position:relative}
+.cta-banner h2::before, .cta-banner h2::after{
+  content:"";display:inline-block;width:32px;height:1px;
+  background:var(--gold-soft);margin:0 18px;vertical-align:middle;opacity:.7;
+}
+@media(max-width:600px){.cta-banner h2::before, .cta-banner h2::after{display:none}}
+
+/* ============ REVIEWS ENHANCED ============ */
+.reviews{position:relative;overflow:hidden}
+.reviews::before{
+  content:"\201C";position:absolute;top:60px;left:50%;transform:translateX(-50%);
+  font-family:'Fraunces',serif;font-size:240px;line-height:1;
+  color:rgba(246,239,223,.04);font-weight:400;pointer-events:none;
+}
+.reviews .container{position:relative;z-index:1}
+
+/* ============ FOOTER NEWSLETTER ============ */
+.footer-news{
+  background:rgba(246,239,223,.04);border:1px solid rgba(246,239,223,.1);
+  border-radius:8px;padding:30px;margin-bottom:40px;
+  display:grid;grid-template-columns:1fr;gap:22px;align-items:center;
+}
+@media(min-width:900px){.footer-news{grid-template-columns:1fr 1.2fr;gap:40px}}
+.footer-news h4{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:300;
+  font-size:26px;margin:0;color:var(--cream);letter-spacing:0;text-transform:none;
+}
+.footer-news p{font-size:13px;color:rgba(246,239,223,.65);margin:8px 0 0}
+.footer-news form{display:flex;gap:10px;flex-wrap:wrap}
+.footer-news input{
+  flex:1;min-width:200px;background:transparent;border:none;
+  border-bottom:1px solid rgba(246,239,223,.25);
+  color:var(--cream);font-family:inherit;font-size:14px;padding:12px 0;
+}
+.footer-news input:focus{outline:none;border-bottom-color:var(--gold-soft)}
+.footer-news input::placeholder{color:rgba(246,239,223,.4)}
+.footer-news button{
+  background:var(--gold);color:var(--ink);border:none;cursor:pointer;
+  padding:12px 22px;border-radius:999px;
+  font-family:'Inter';font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  transition:transform .25s,background .25s;
+}
+.footer-news button:hover{background:var(--gold-soft);transform:translateY(-2px)}
+
+/* ============ Wave divider SVG ============ */
+.wave-sep{
+  display:block;width:100%;height:60px;line-height:0;
+}
+.wave-sep svg{width:100%;height:100%;display:block}
+
+/* ============ Magnetic CTA hover effect ============ */
+.btn{position:relative;overflow:hidden;z-index:1}
+.btn::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.18) 50%,transparent 65%);
+  transform:translateX(-100%);transition:transform .7s ease;z-index:-1;
+}
+.btn:hover::after{transform:translateX(100%)}
+
+/* ============ Polished reveal animations ============ */
+.reveal-r{opacity:0;transform:translateX(40px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+.reveal-r.in{opacity:1;transform:translateX(0)}
+.reveal-l{opacity:0;transform:translateX(-40px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+.reveal-l.in{opacity:1;transform:translateX(0)}
+.reveal-up{opacity:0;transform:translateY(48px) scale(.97);transition:opacity 1s ease,transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.reveal-up.in{opacity:1;transform:translateY(0) scale(1)}
+
+/* ============ Refinements pour la nav (subtle gold underline on hover) ============ */
+.nav-links a{padding:6px 0}
+.nav-links a::after{
+  content:"";position:absolute;bottom:-4px;left:0;height:1px;width:0;
+  background:var(--gold);transition:width .35s cubic-bezier(.2,.8,.2,1);
+}
+.nav-links a:hover::after{width:100%}
+.nav-links a:hover{opacity:1}
+
+/* ============ Section head numbering improvement ============ */
+.section-head .eyebrow,.cul-head .eyebrow,.story-text .eyebrow,.beach-text .eyebrow,.pool-text .eyebrow,.cas-text .eyebrow,.aerial-overlay .eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+}
+.section-head .eyebrow::before,.cul-head .eyebrow::before,.story-text .eyebrow::before,.beach-text .eyebrow::before,.pool-text .eyebrow::before,.cas-text .eyebrow::before,.aerial-overlay .eyebrow::before{
+  content:"";width:32px;height:1px;background:currentColor;opacity:.55;
+}
+.section-head.center .eyebrow{justify-content:center}
+.section-head.center .eyebrow::after{
+  content:"";width:32px;height:1px;background:currentColor;opacity:.55;
+}
+
+/* ============ Caption refinement ============ */
+.story-img .caption{
+  border:1px solid rgba(184,92,46,.2);
+  background:linear-gradient(135deg,var(--cream) 0%,var(--cream-2) 100%);
+}
+
+/* ============ Hover CTA banner subtle parallax ============ */
+.cta-banner{transition:background-position 1.2s ease}
+.cta-banner:hover{background-position:center 30%}
+
+/* ============ Responsive tweaks ============ */
+@media(max-width:768px){
+  .marquee-track{font-size:26px;gap:40px}
+  .marquee-track span{gap:40px}
+  .hero h1::after{display:none}
+}

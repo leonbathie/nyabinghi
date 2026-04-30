@@ -101,9 +101,10 @@ function initMobileMenu() {
   });
 }
 
-// ----- Hero slideshow (with lazy bg loading) -----
+// ----- Hero slideshow (with lazy bg loading + dots) -----
 function initHeroSlideshow() {
   const slides = document.querySelectorAll('.hero-slide');
+  const dotsWrap = document.getElementById('heroDots');
   if (slides.length < 2) return;
 
   // Lazy-load: convert data-bg into background-image just before showing
@@ -115,24 +116,65 @@ function initHeroSlideshow() {
     }
   };
 
+  // Build dots
+  const dots = [];
+  if (dotsWrap) {
+    dotsWrap.innerHTML = '';
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.className = 'hd' + (i === 0 ? ' active' : '');
+      b.setAttribute('aria-label', 'Slide ' + (i + 1));
+      b.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(b);
+      dots.push(b);
+    });
+  }
+
   // Preload the next slide so the transition is smooth
   ensureLoaded(slides[1]);
 
   let idx = 0;
-  setInterval(() => {
-    const nextIdx = (idx + 1) % slides.length;
+  let timer = null;
+
+  function setActive(nextIdx) {
     const afterIdx = (nextIdx + 1) % slides.length;
     ensureLoaded(slides[nextIdx]);
     ensureLoaded(slides[afterIdx]);
     slides[idx].classList.remove('active');
     slides[nextIdx].classList.add('active');
+    if (dots.length) {
+      dots.forEach((d, j) => {
+        // Reset progress fill animation for the active dot
+        d.classList.toggle('active', j === nextIdx);
+        if (j === nextIdx) {
+          // Force reflow to restart CSS transition on ::after
+          d.style.animation = 'none';
+          // eslint-disable-next-line no-unused-expressions
+          d.offsetHeight;
+          d.style.animation = '';
+        }
+      });
+    }
     idx = nextIdx;
-  }, 6000);
+  }
+
+  function goTo(i) {
+    if (i === idx) return;
+    setActive(((i % slides.length) + slides.length) % slides.length);
+    resetTimer();
+  }
+
+  function tick() { setActive((idx + 1) % slides.length); }
+  function resetTimer() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(tick, 6000);
+  }
+  resetTimer();
 }
 
-// ----- Reveal on scroll -----
+// ----- Reveal on scroll (handles .reveal, .reveal-up, .reveal-r, .reveal-l) -----
 function initReveals() {
-  const els = document.querySelectorAll('.reveal');
+  const els = document.querySelectorAll('.reveal, .reveal-up, .reveal-r, .reveal-l');
   if (!('IntersectionObserver' in window)) {
     els.forEach(e => e.classList.add('in'));
     return;
@@ -140,6 +182,11 @@ function initReveals() {
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => {
       if (en.isIntersecting) {
+        // Stagger children inside grids for a nicer cascade
+        const children = en.target.parentElement && en.target.parentElement.matches('.cul-grid, .stay-grid, .exp-grid')
+          ? Array.from(en.target.parentElement.children).indexOf(en.target)
+          : 0;
+        en.target.style.transitionDelay = (children * 80) + 'ms';
         en.target.classList.add('in');
         io.unobserve(en.target);
       }
