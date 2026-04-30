@@ -2,7 +2,7 @@ name: Debug SSH
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
