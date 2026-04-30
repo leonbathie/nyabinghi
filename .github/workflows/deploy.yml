@@ -24,7 +24,7 @@ jobs:
         env:
           VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
         run: |
-          ssh -o StrictHostKeyChecking=no ousmane@173.249.2.195 "
+          ssh -o StrictHostKeyChecking=no ousmane@173.249.2.195 << EOF
             set -e
             cd /var/www/nyabinghi
             git fetch --all
@@ -34,11 +34,11 @@ jobs:
             echo 'c2VydmVyIHsKICAgIGxpc3RlbiA4MDgxOwogICAgbGlzdGVuIFs6Ol06ODA4MTsKICAgIHNlcnZlcl9uYW1lIDE3My4yNDkuMi4xOTU7CgogICAgcm9vdCAvdmFyL3d3dy9ueWFiaW5naGk7CiAgICBpbmRleCBpbmRleC5odG1sOwoKICAgIGxvY2F0aW9uIC8gewogICAgICAgIHRyeV9maWxlcyAkdXJpICR1cmkvID00MDQ7CiAgICB9CgogICAgIyBDYWNoZSBhc3NldHMgc3RhdGlxdWVzCiAgICBsb2NhdGlvbiB+KiBcLihqcGd8anBlZ3xwbmd8d2VicHxhdmlmfGdpZnxzdmd8Y3NzfGpzfHdvZmYyPykkIHsKICAgICAgICBleHBpcmVzIDMwZDsKICAgICAgICBhZGRfaGVhZGVyIENhY2hlLUNvbnRyb2wgInB1YmxpYywgaW1tdXRhYmxlIjsKICAgIH0KCiAgICAjIFPDqWN1cml0w6kgYmFzaXF1ZQogICAgYWRkX2hlYWRlciBYLUZyYW1lLU9wdGlvbnMgIlNBTUVPUklHSU4iOwogICAgYWRkX2hlYWRlciBYLUNvbnRlbnQtVHlwZS1PcHRpb25zICJub3NuaWZmIjsKfQ==' | base64 -d > /tmp/nyabinghi.conf
             
             # Envoi du mot de passe GitHub à sudo pour appliquer la conf sans bloquer
-            echo \"\$VPS_PASSWORD\" | sudo -S mv /tmp/nyabinghi.conf /etc/nginx/sites-available/nyabinghi
-            echo \"\$VPS_PASSWORD\" | sudo -S ln -sf /etc/nginx/sites-available/nyabinghi /etc/nginx/sites-enabled/
-            echo \"\$VPS_PASSWORD\" | sudo -S nginx -t
-            echo \"\$VPS_PASSWORD\" | sudo -S systemctl reload nginx
-            echo \"\$VPS_PASSWORD\" | sudo -S ufw allow 8081/tcp
+            echo "${VPS_PASSWORD}" | sudo -S mv /tmp/nyabinghi.conf /etc/nginx/sites-available/nyabinghi
+            echo "${VPS_PASSWORD}" | sudo -S ln -sf /etc/nginx/sites-available/nyabinghi /etc/nginx/sites-enabled/
+            echo "${VPS_PASSWORD}" | sudo -S nginx -t
+            echo "${VPS_PASSWORD}" | sudo -S systemctl reload nginx
+            echo "${VPS_PASSWORD}" | sudo -S ufw allow 8081/tcp
             
-            echo \"✓ Deploiement MVC Nginx et Github (Port 8081) reussi !\"
-          "
+            echo "✓ Deploiement MVC Nginx et Github (Port 8081) reussi !"
+          EOF
