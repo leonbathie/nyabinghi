@@ -101,15 +101,32 @@ function initMobileMenu() {
   });
 }
 
-// ----- Hero slideshow -----
+// ----- Hero slideshow (with lazy bg loading) -----
 function initHeroSlideshow() {
   const slides = document.querySelectorAll('.hero-slide');
   if (slides.length < 2) return;
+
+  // Lazy-load: convert data-bg into background-image just before showing
+  const ensureLoaded = (slide) => {
+    const url = slide.dataset.bg;
+    if (url) {
+      slide.style.backgroundImage = `url('${url}')`;
+      delete slide.dataset.bg;
+    }
+  };
+
+  // Preload the next slide so the transition is smooth
+  ensureLoaded(slides[1]);
+
   let idx = 0;
   setInterval(() => {
+    const nextIdx = (idx + 1) % slides.length;
+    const afterIdx = (nextIdx + 1) % slides.length;
+    ensureLoaded(slides[nextIdx]);
+    ensureLoaded(slides[afterIdx]);
     slides[idx].classList.remove('active');
-    idx = (idx + 1) % slides.length;
-    slides[idx].classList.add('active');
+    slides[nextIdx].classList.add('active');
+    idx = nextIdx;
   }, 6000);
 }
 
