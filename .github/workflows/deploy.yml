@@ -2,7 +2,7 @@ name: Deploy to VPS
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
-          
+
       - name: Add host key to known_hosts
         run: |
           mkdir -p ~/.ssh
@@ -22,4 +22,43 @@ jobs:
 
       - name: SSH and pull latest
         run: |
-          ssh -o StrictHostKeyChecking=no ousmane@173.249.2.195 "set -e && cd /var/www/nyabinghi && git fetch --all && git reset --hard origin/main && echo '✓ Deployed commit \$(git rev-parse --short HEAD) at \$(date)'"
+          ssh -o StrictHostKeyChecking=no ousmane@173.249.2.195 'bash -s' << 'ENDSSH'
+            set -e
+            cd /var/www/nyabinghi
+            git fetch --all
+            git reset --hard origin/main
+            
+            # On écrit la configuration Nginx (port 8081)
+            cat << 'EOF' | sudo tee /etc/nginx/sites-available/nyabinghi > /dev/null
+            server {
+                listen 8081;
+                listen [::]:8081;
+                server_name 173.249.2.195;
+
+                root /var/www/nyabinghi;
+                index index.html;
+
+                location / {
+                    try_files $uri $uri/ =404;
+                }
+
+                # Cache assets statiques
+                location ~* \.(jpg|jpeg|png|webp|avif|gif|svg|css|js|woff2?)$ {
+                    expires 30d;
+                    add_header Cache-Control "public, immutable";
+                }
+
+                # Sécurité basique
+                add_header X-Frame-Options "SAMEORIGIN";
+                add_header X-Content-Type-Options "nosniff";
+            }
+            EOF
+            
+            # Activation et rechargement de Nginx
+            sudo ln -sf /etc/nginx/sites-available/nyabinghi /etc/nginx/sites-enabled/
+            sudo nginx -t
+            sudo systemctl reload nginx
+            sudo ufw allow 8081/tcp
+            
+            echo "✓ Deploiement reussi (Commit: $(git rev-parse --short HEAD))"
+          ENDSSH
