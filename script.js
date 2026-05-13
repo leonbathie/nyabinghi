@@ -36,7 +36,7 @@ function initScrollProgress() {
 
 // ----- Animated stat counters (in-view) -----
 function initStatCounters() {
-  const stats = document.querySelectorAll('.hero-stats .stat[data-count]');
+  const stats = document.querySelectorAll('.hero-meta .stat[data-count]');
   if (!stats.length) return;
 
   const animate = (el) => {
